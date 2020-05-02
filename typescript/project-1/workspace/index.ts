@@ -1,28 +1,32 @@
 import restaurants from "./restaurants";
 
 const dollarSigns = "$$";
-const deliveryTimeMax = 90;
+const deliveryTimeMax = "90";
+const maxDistance = 10;
+let result;
 
-function getRestaurantRecommendations() {
-  const priceBracket: string = dollarSigns.length;
+const priceBracket: string = dollarSigns.length;
 
-  const filteredRestaurants = restaurants.filter((restaurant) => {
-    if (restaurant.priceBracket > priceBracket) return false;
-
-    if (restaurant.avgDeliveryTime > deliveryTimeMax) return false;
-
-    return restaurant;
-  });
-
-  let result;
-
-  if (filteredRestaurants.length === 0) {
-    result = "There are no restaurants available right now.";
-  } else {
-    result = `We found ${filteredRestaurants.length} restaurants, the first is ${filteredRestaurants[0].restaurantName}.`;
+const filteredRestaurants = restaurants.filter((restaurant) => {
+  if (restaurant.priceBracket > priceBracket) {
+    return false;
   }
 
-  return console.log(result);
+  if (restaurant.deliveryTimeMinutes > deliveryTimeMax) {
+    return false;
+  }
+
+  if (restaurant.distance > maxDistance) {
+    return false;
+  }
+
+  return restaurant;
+});
+
+if (filteredRestaurants.length === 0) {
+  result = "There are no restaurants available right now.";
+} else {
+  result = `We found ${filteredRestaurants.length} restaurants, the first is ${filteredRestaurants[0].restaurantName}.`;
 }
 
-getRestaurantRecommendations();
+console.log(result);

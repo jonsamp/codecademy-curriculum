@@ -2,15 +2,15 @@
 
 ## Overview
 
-Here's the code of a program that recommends restaurants to its users. The program takes in a few variables, like price range, delivery time, and whether the restaurant is open or not to reccomend you the perfect spot.
+Here's the code of a program that recommends restaurants from a list of restaurants. The program should take a few variables, like price range, delivery time, distance, and whether the restaurant is open to reccomend you the perfect spot.
 
-The problem is this recommendation program is broken. While the program runs without a fatal JavaScript errors, it does not recommend any satiating suggestions. All we get is a disappointing "We found 2 restaurants, the first is undefined.".
+The problem is that this recommendation program does not recommend much. While the program runs without any fatal JavaScript errors, it does not recommend any satiating suggestions. All we get is a disappointing "We found 3 restaurants, the first is undefined.".
 
 Use your knowledge of TypeScript to fix type errors and add the missing features, so we can get on our way to good eats.
 
 ## Tasks
 
-1. Start by running `tsc index.ts` in the command line, and notice the errors. Let's start with the first error:
+1. Start by running `tsc index.ts` in the command line, and notice the errors. Scroll to the top of the list to see the first error:
 
    ```bash
    Type 'number' is not assignable to type 'string'.
@@ -27,47 +27,40 @@ Use your knowledge of TypeScript to fix type errors and add the missing features
 
    </details>
 
-2. Run `tsc index.ts`. Notice there's an error on line 10 because the `>` operator cannot act on two different types. This is because in the restaurants list, `priceBracket` is a string.
-
-   Use the [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) or [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) constructor to transform one of these variables to the type you need.
+2. Run `tsc index.ts`. Notice there's another error on line 11 because the `>` operator cannot act on two different types. Since we are using the `>` operator, we need to compare two numbers. If you look at the **restaurants.ts** file, we can see that the `priceBracket` property has string values. Since you defined `priceBracket` in **index.ts** as a `number` in the last step, use the [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) constructor to transform the restaurant's price bracket property to a number.
 
    <details>
-     <summary>Hint:</summary>
+   <summary>Hint:</summary>
 
-   There are two way to solve this error, which both include transforming one type into another. We could write:
+   We can use the `Number` constructor to transform `restaurant.priceBracket`:
 
    ```js
    if (Number(restaurant.priceBracket) > priceBracket)
    ```
 
-   Alternatively, we could write:
-
-   ```js
-   if (restaurant.priceBracket > String(priceBracket))
-   ```
-
    </details>
 
-3. Run `tsc index.ts`. The next error is like the one from the previous task. Use a similar strategy to resolve this error.
+3. Run `tsc index.ts`. The next error is like the one from the previous task. This time, assign the `deliveryTimeMax` variable to a value that will match a restaurant's `deliveryTimeMinutes` property's value in type.
 
    <details>
    <summary>Hint:</summary>
 
-   We can use the `String` or `Number` constructors again here to solve this type mismatch:
-
    ```js
-   if (Number(restaurant.avgDeliveryTime) > deliveryTimeMax)
-   ```
-
-   Alternatively, we could write:
-
-   ```js
-   if (restaurant.avgDeliveryTime > String(deliveryTimeMax))
+   const deliveryTimeMax = 90;
    ```
 
    </details>
 
-4. Run `tsc index.ts`. There's only one error left! It looks like we're trying to access the `restaurantName` property on a result, but that property does not exist. Read the error to try to find a property to print the restaurant's name here.
+4. Run `tsc index.ts`. The next error is like the ones from the previous tasks. Fix the type before moving on.
+
+   <details>
+   <summary>Hint:</summary>
+
+   Each restaurant has a `distance` property with a string as its value, while our program has a `maxDistance` variable with a number as its value. Since we are using the `>` operator, we want to compare two numbers.
+
+   </details>
+
+5. Run `tsc index.ts`. There's only one error left! It looks like we're trying to access the `restaurantName` property on a restaurant but that property does not exist. Read the error to try to find a property to print the restaurant's name here.
 
    <details>
    <summary>Hint:</summary>
@@ -82,7 +75,7 @@ Use your knowledge of TypeScript to fix type errors and add the missing features
 
    </details>
 
-5. Now when you run `tsc index.ts`, you'll notice there are no remaining errors, however this program is still inferring that the `result` is of type `any`. You can see this if you hover over the `result` variable with your mouse. Figure out what type this variable should be and annotate it. Check your work with `tsc index.ts`.
+6. Now when you run `tsc index.ts`, you'll notice there are no remaining errors, however this program is still inferring that the `result` is of type `any`. You can see this if you hover over the `result` variable with your mouse. Figure out what type this variable should be and annotate it. Check your work with `tsc index.ts`.
 
    <details>
    <summary>Hint:</summary>
@@ -93,7 +86,7 @@ Use your knowledge of TypeScript to fix type errors and add the missing features
 
    </details>
 
-6. When adding types with `tsc`, you've also compiled the code into JavaScript inside **index.js**.
+7. When adding types with `tsc`, you've also compiled the code into JavaScript inside **index.js**.
 
    The program should now run and provide a result. Run the program with `node index.js` and verify the program recommends something other than `undefined`.
 
@@ -104,14 +97,14 @@ Use your knowledge of TypeScript to fix type errors and add the missing features
 
    </details>
 
-7. Now that the code has proper typings, lets add a feature to make sure the restaurant is currently open based on the current time's hour.
+8. Now that the code has proper typings, lets add a feature to make sure the restaurant is currently open based on the current time's hour.
 
    At the top of index.ts, write a variable named `hour` with a value of `new Date().getHours()`. Then annotate this variable with the correct type.
 
    <details>
    <summary>Hint:</summary>
 
-   The `getHours` function returns a number representing the current hour in 24 hour time. Therefore you can annotate it with:
+   The `getHours` function returns a number representing the current hour in a 24 hour time format (example: 3PM is 15). Therefore you can annotate it with:
 
    ```js
    const hour: number = new Date().getHours();
@@ -119,46 +112,41 @@ Use your knowledge of TypeScript to fix type errors and add the missing features
 
    </details>
 
-8. Within the `filter` function, we want to add another condition alongside the price bracket check and the delivery time check that will check if the restaurant is currently open. If the restaruant is not currently open, then return `false`.
+9. Within the `filter` function, we want to add another condition alongside the existing checks that will check if the restaurant is currently open. If the restaruant is not currently open, then return `false` (this will prevent the restaurant from appearing in the result).
 
-   In the restarant list, each restaurant has a `openHour` and `closeHour` property. Compare the `hour` from the last step to make sure the restaurant is open.
-
-   <details>
-   <summary>Hint:</summary>
-
-   We want to make sure the current hour is in between the opening and closing hours of the restaurant. To do this, you could write:
-
-   ```js
-   if (hour < restaurant.openTime || hour > restaurant.closeTime) return false;
-   ```
-
-   </details>
-
-9. Run `tsc index.ts` again. You might notice there's another type mismatch in the condition you just wrote. Fix the error and verify with `tsc index.ts`.
+   In the restarants list in **restaurants.ts**, each restaurant has an `openHour` and a `closeHour` property. Using an `if` statement, compare the `hour` from the last step against `openHour` and `closeHour` to make sure the restaurant is currently open.
 
    <details>
    <summary>Hint:</summary>
 
-   Since the restaurant list has all of its values as strings, you may have a type mismatch when comparing the `hour` variable because it's a `number`. To solve this you could:
-
-   Transform the `hour` variable to a string.
+   We want to make sure the current `hour` is between the opening and closing hours of the restaurant. To do this, we could write a condition that checks if the current `hour` is before `openHour` or after `closeHour`:
 
    ```js
-   const hour: string = String(new Date().getHours());
-   ```
-
-   Transform `openTime` and `closeTime` into numbers.
-
-   ```js
-   if (
-     hour < Number(restaurant.openTime) ||
-     hour > Number(restaurant.closeTime)
-   )
+   if (hour < restaurant.openHour || hour > restaurant.closeHour) {
      return false;
+   }
    ```
 
    </details>
 
-10. When `tsc index.ts` no longer exposes any type errors, run `node index.js` to view the result of the restaurant recommendation.
+10. Run `tsc index.ts` again. You might notice there's another type mismatch in the condition you just wrote. Fix the error and verify with `tsc index.ts`.
+
+   <details>
+   <summary>Hint:</summary>
+
+    Since the restaurant list has all of its values as strings, you may have a type mismatch when comparing the `hour` variable because it's a `number`. To solve this we could transform `openHour` and `closeHour` into numbers.
+
+    ```js
+    if (
+      hour < Number(restaurant.openHour) ||
+      hour > Number(restaurant.closeHour)
+    ) {
+      return false;
+    }
+    ```
+
+   </details>
+
+11. When `tsc index.ts` no longer exposes any type errors, run `node index.js` to view the result of the restaurant recommendation.
 
     Nice work on making this program more maintainable and free from a whole class of bugs caused by type mismatches.
