@@ -2,7 +2,7 @@
 
 ## Overview
 
-Here's the code of a program that recommends restaurants from a list of restaurants. The program should take a few variables, like price range, delivery time, distance, and whether the restaurant is open to reccomend you the perfect spot.
+Let's collaborate on a program that recommends restaurants from a list of restaurants. The program should take a few variables, like price range, delivery time, distance, and whether the restaurant is open to recommend you the perfect spot.
 
 The problem is that this recommendation program does not recommend much. While the program runs without any fatal JavaScript errors, it does not recommend any satiating suggestions. All we get is a disappointing "We found 3 restaurants, the first is undefined.".
 
@@ -75,7 +75,7 @@ Use your knowledge of TypeScript to fix type errors and add the missing features
 
    </details>
 
-6. Now when you run `tsc index.ts`, you'll notice there are no remaining errors, however this program is still inferring that the `result` is of type `any`. You can see this if you hover over the `result` variable with your mouse. Figure out what type this variable should be and annotate it. Check your work with `tsc index.ts`.
+6. Now when you run `tsc index.ts`, you'll notice there are no remaining errors, however, this program is still inferring that the `result` is of type `any`. You can see this if you hover over the `result` variable with your mouse. Figure out what type this variable should be and annotate it. Check your work with `tsc index.ts`.
 
    <details>
    <summary>Hint:</summary>
@@ -97,7 +97,7 @@ Use your knowledge of TypeScript to fix type errors and add the missing features
 
    </details>
 
-8. Now that the code has proper typings, lets add a feature to make sure the restaurant is currently open based on the current time's hour.
+8. Now that the code has proper typings, let's add a feature to make sure the restaurant is currently open based on the current time's hour.
 
    At the top of index.ts, write a variable named `hour` with a value of `new Date().getHours()`. Then annotate this variable with the correct type.
 
@@ -112,9 +112,9 @@ Use your knowledge of TypeScript to fix type errors and add the missing features
 
    </details>
 
-9. Within the `filter` function, we want to add another condition alongside the existing checks that will check if the restaurant is currently open. If the restaruant is not currently open, then return `false` (this will prevent the restaurant from appearing in the result).
+9. Within the `filter` function, we want to add another condition alongside the existing checks that will check if the restaurant is currently open. If the restaurant is not currently open, then return `false` (this will prevent the restaurant from appearing in the result).
 
-   In the restarants list in **restaurants.ts**, each restaurant has an `openHour` and a `closeHour` property. Using an `if` statement, compare the `hour` from the last step against `openHour` and `closeHour` to make sure the restaurant is currently open.
+   In the restaurants list in **restaurants.ts**, each restaurant has an `openHour` and a `closeHour` property. Using an `if` statement, compare the `hour` from the last step against `openHour` and `closeHour` to make sure the restaurant is currently open.
 
    <details>
    <summary>Hint:</summary>
@@ -131,8 +131,8 @@ Use your knowledge of TypeScript to fix type errors and add the missing features
 
 10. Run `tsc index.ts` again. You might notice there's another type mismatch in the condition you just wrote. Fix the error and verify with `tsc index.ts`.
 
-   <details>
-   <summary>Hint:</summary>
+      <details>
+      <summary>Hint:</summary>
 
     Since the restaurant list has all of its values as strings, you may have a type mismatch when comparing the `hour` variable because it's a `number`. To solve this we could transform `openHour` and `closeHour` into numbers.
 
@@ -145,7 +145,7 @@ Use your knowledge of TypeScript to fix type errors and add the missing features
     }
     ```
 
-   </details>
+      </details>
 
 11. When `tsc index.ts` no longer exposes any type errors, run `node index.js` to view the result of the restaurant recommendation.
 
