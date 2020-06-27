@@ -23,7 +23,7 @@ Follow the tasks below to create a purchase flow for TypeMart visitors.
 
    </details>
 
-2. Next we need to store the name of the product the user is trying to find. Declare a variable named `productName`, annotate it with the appropriate type, and set its value to one of the product names in **products.ts**.
+2. Next, we need to store the name of the product the user is trying to find. Declare a variable named `productName`, annotate it with the appropriate type, and set its value to one of the product names in **products.ts**.
 
    <details>
    <summary>Hint:</summary>
@@ -62,7 +62,7 @@ A great way to make this condition work as expected would be to change the `preS
 
    </details>
 
-5. Now we're ready to calculate the price of the item. To provide the user a receipt, we'll need to show the price, tax, shipping, and total price. First, declare two variables: `shipping` and `taxPercent`. Make the `shipping` variable's value `20` (as in \$20) and annotate it with the correct type.
+5. Now we're ready to calculate the price of the item. To provide the shopper a receipt, we'll need to show the price, tax, shipping, and total price. First, declare two variables: `shipping` and `taxPercent`. Make the `shipping` variable's value `20` (as in \$20) and annotate it with the correct type.
 
 Next, declare a variable named `taxPercent` with a value of `0.05` (as in 5%), then annotate it with the correct type.
 
@@ -140,7 +140,7 @@ taxTotal = product.price * taxPercent;
 
 10. Next, calculate the `total`. The `total` should be the summation of the `product. price`, `taxTotal`, and `shipping`.
 
-Run `tsx index.ts` to check for any type errors.
+Run `tsc index.ts` to check for any type errors.
 
 <details>
    <summary>Hint:</summary>
