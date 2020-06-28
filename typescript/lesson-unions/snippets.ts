@@ -37,3 +37,37 @@ function formatValue(value: string | number) {
     console.log(value.toFixed(2));
   }
 }
+
+// type narrowing with specific method calls
+function formatValue(value: string | number | boolean) {
+  if (typeof value === "string") {
+    return value.toLowerCase();
+  }
+
+  if (typeof value === "number") {
+    return value.toFixed(2);
+  }
+
+  return value.toString();
+}
+
+const formattedValue: string | number = formatValue(false);
+
+type User = {
+  id: number;
+  username: string;
+};
+
+function getUser() {
+  const randomChance = Math.random() >= 0.5;
+
+  if (randomChance) {
+    return { id: 1, username: "flyingCroissant" };
+  } else {
+    return "Could not retrieve user.";
+  }
+}
+
+const userData: User | string = getUser();
+
+console.log(userData);
