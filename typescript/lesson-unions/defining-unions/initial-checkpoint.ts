@@ -1,5 +1,5 @@
-function print(statement) {
+function printNumsAndStrings(statement) {
   console.log(`ℹ️ LOG:: ${statement}`);
 }
 
-print("hello!");
+printNumsAndStrings('hello!');

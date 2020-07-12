@@ -18,7 +18,7 @@ Follow the tasks below to create a purchase flow for TypeMart visitors.
    <summary>Hint:</summary>
 
    ```js
-   import products from "./products";
+   import products from './products';
    ```
 
    </details>
@@ -29,7 +29,7 @@ Follow the tasks below to create a purchase flow for TypeMart visitors.
    <summary>Hint:</summary>
 
    ```js
-   const productName: string = "fanny pack";
+   const productName: string = 'fanny pack';
    ```
 
    </details>
@@ -48,15 +48,15 @@ const product = products.filter((product) => product.name === productName)[0];
 
    </details>
 
-4. Now that we have a product, we have some shop-specific logic to create. First, if the product has a `preSale` property of `true`, then use `console.log` to print "We'll send you a message when your product has shipped.".
+4. Now that we have a product, we have some shop-specific logic to create. First, if the product has a `preSale` property of `true`, then use `console.log` to print 'We'll send you a message when your product has shipped.'.
 
-Once you've implemented this condition, use `tsc index.ts` to compile your code, then `node index.js` to run your program. Make sure that the "fanny pack" product makes the message print and that the "beanie" product does not (since it's not on pre-sale).
+Once you've implemented this condition, use `tsc index.ts` to compile your code, then `node index.js` to run your program. Make sure that the 'fanny pack' product makes the message print and that the 'beanie' product does not (since it's not on pre-sale).
 
    <details>
    <summary>Hint:</summary>
    Try using the `===` operator to make sure the `preSale` property is `true`, then use `tsc index.ts` to find errors.
 
-Since the data we provided has strings as the values of the `preSale` properties in **products.ts**, both `"true"` and `"false"` are truthy values if you write a condition like `if (product.preSale) ...`.
+Since the data we provided has strings as the values of the `preSale` properties in **products.ts**, both `'true'` and `'false'` are truthy values if you write a condition like `if (product.preSale) ...`.
 
 A great way to make this condition work as expected would be to change the `preSale` values in **products.ts** to be booleans.
 
@@ -90,7 +90,7 @@ let total: number;
 
 6. One special we will have at TypeMart is that if the price of an item is over \$25, then we will provide free shipping. Write a conditional that sets `shipping` to `0` if the `price` of the `product` is over `25`. In addition, write a `console.log` stating that we provide free shipping for this product.
 
-Use `tsc index.ts` and `node index.js` to verify that "fanny pack" prints the message about free shipping and "shirt" does not.
+Use `tsc index.ts` and `node index.js` to verify that 'fanny pack' prints the message about free shipping and 'shirt' does not.
 
    <details>
    <summary>Hint:</summary>
@@ -107,18 +107,18 @@ Since this is the second time our data has had the incorrect type, we could also
    <summary>Hint:</summary>
 
 ```js
-const shippingAddress: string = "575 Broadway, New York City, New York",
+const shippingAddress: string = '575 Broadway, New York City, New York',
 ```
 
    </details>
 
-8. If the shipping address contains the value "New York", then we need to set the `taxPercent` to `0.1` (a shocking 10%). Use the [`match`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) method to check if the string matches.
+8. If the shipping address contains the value 'New York', then we need to set the `taxPercent` to `0.1` (a shocking 10%). Use the [`match`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) method to check if the string matches.
 
 <details>
    <summary>Hint:</summary>
 
 ```js
-if (shippingAddress.match("New York")) {
+if (shippingAddress.match('New York')) {
   taxPercent = 0.1;
 }
 ```
@@ -164,4 +164,4 @@ Total:    $${total.toFixed(2)}
 `);
 ```
 
-Then run `tsc index.ts` and `node index.js` to verify the receipt is correct. If your logic is correct, a "fanny pack" bought inside New York is \$33, while a "hoodie" bought outside of New York is \$45.15.
+Then run `tsc index.ts` and `node index.js` to verify the receipt is correct. If your logic is correct, a 'fanny pack' bought inside New York is \$33, while a 'hoodie' bought outside of New York is \$45.15.

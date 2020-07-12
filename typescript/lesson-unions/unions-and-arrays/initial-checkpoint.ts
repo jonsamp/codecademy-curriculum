@@ -1,19 +1,19 @@
 function formatListings(values) {
   return values.map((value) => {
-    if (typeof value === "string") {
+    if (typeof value === 'string') {
       return value.toUpperCase();
     }
 
-    if (typeof value === "number") {
+    if (typeof value === 'number') {
       return `$${value.toLocaleString()}`;
     }
   });
 }
 
 const result = formatListings([
-  "123 Main St",
+  '123 Main St',
   226800,
-  "580 Broadway Apt 4a",
+  '580 Broadway Apt 4a',
   337900,
 ]);
 

@@ -1,6 +1,6 @@
-function print(statement: string | number) {
+function printNumsAndStrings(statement: string | number) {
   console.log(`ℹ️ LOG:: ${statement}`);
 }
 
-print("Hiya!");
-print(42);
+printNumsAndStrings('Hiya!');
+printNumsAndStrings(42);

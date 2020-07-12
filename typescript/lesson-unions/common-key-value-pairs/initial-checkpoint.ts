@@ -12,8 +12,8 @@ function getFriendNameFromEvent(event) {
 }
 
 const event = {
-  username: "vkrauss",
-  displayName: "Veronica Krauss",
+  username: 'vkrauss',
+  displayName: 'Veronica Krauss',
 };
 
 const name = getFriendNameFromEvent(event);

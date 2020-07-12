@@ -1,11 +1,11 @@
-import products from "./products";
+import products from './products';
 
-const productName: string = "hoodie";
+const productName: string = 'hoodie';
 
 const product = products.filter((product) => product.name === productName)[0];
 
 if (product.preSale === true) {
-  console.log("We'll send you a message when your product has shipped.");
+  console.log('We'll send you a message when your product has shipped.');
 }
 
 let shipping: number = 20;
@@ -14,13 +14,13 @@ let taxTotal: number;
 let total: number;
 
 if (product.price > 25) {
-  console.log("This item ships free!");
+  console.log('This item ships free!');
   shipping = 0;
 }
 
-let shippingAddress: string = "575 Broadway, Maine";
+let shippingAddress: string = '575 Broadway, Maine';
 
-if (shippingAddress.match("New York")) {
+if (shippingAddress.match('New York')) {
   taxPercent = 0.1;
 }
 

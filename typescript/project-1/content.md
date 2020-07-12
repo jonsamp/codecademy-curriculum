@@ -4,7 +4,7 @@
 
 Let's collaborate on a program that recommends restaurants from a list of restaurants. The program should take a few variables, like price range, delivery time, distance, and whether the restaurant is open to recommend you the perfect spot.
 
-The problem is that this recommendation program does not recommend much. While the program runs without any fatal JavaScript errors, it does not recommend any satiating suggestions. All we get is a disappointing "We found 3 restaurants, the first is undefined.".
+The problem is that this recommendation program does not recommend much. While the program runs without any fatal JavaScript errors, it does not recommend any satiating suggestions. All we get is a disappointing 'We found 3 restaurants, the first is undefined.'.
 
 Use your knowledge of TypeScript to fix type errors and add the missing features, so we can get on our way to good eats.
 
