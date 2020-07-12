@@ -1,11 +1,11 @@
-function formatListings(values) {
-  return values.map((value) => {
-    if (typeof value === 'string') {
-      return value.toUpperCase();
+function formatListings(listings) {
+  return listings.map((listing) => {
+    if (typeof listing === 'string') {
+      return listing.toUpperCase();
     }
 
-    if (typeof value === 'number') {
-      return `$${value.toLocaleString()}`;
+    if (typeof listing === 'number') {
+      return `$${listing.toLocaleString()}`;
     }
   });
 }
