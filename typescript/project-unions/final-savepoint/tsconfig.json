@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
-    "target": "ESNext"
+    "target": "es2017",
+    "module": "commonjs"
   },
-  "files": ["index.ts", "courses.ts", "studyGroups.ts"]
+  "include": ["**/*.ts"]
 }
