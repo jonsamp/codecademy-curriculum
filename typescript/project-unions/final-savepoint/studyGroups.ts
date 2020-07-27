@@ -9,7 +9,7 @@ const studyGroups = [
   {
     id: 102,
     courseId: 2,
-    title: 'Resarch Methods 1 Study Group',
+    title: 'Research Methods 1 Study Group',
     keywords: ['lab', 'research', 'science', 'self-study'],
     type: 'group',
   },
