@@ -22,60 +22,29 @@ type SearchEventArgs = {
   type: 'courses' | 'groups';
 };
 
-type ManageScheduleArgs = {
-  action: 'enroll' | 'drop';
-  event: Course | StudyGroup;
-};
+let enrolledEvents: (Course | StudyGroup)[] = [];
 
-let events = [];
-
-function searchEvents(args: SearchEventArgs): (Course | StudyGroup)[] {
-  const { query, type } = args;
-  const isCourses = type === 'courses';
-  const events: (Course | StudyGroup)[] = isCourses ? courses : studyGroups;
+function searchEvents(args: SearchEventArgs) {
+  const events: (Course | StudyGroup)[] =
+    args.type === 'courses' ? courses : studyGroups;
 
   return events.filter((event: Course | StudyGroup) => {
-    if (typeof query === 'number') {
-      return event.id === query;
+    if (typeof args.query === 'number') {
+      return event.id === args.query;
     }
 
-    if (typeof query === 'string' && event.keywords) {
-      return event.keywords.includes(query);
+    if (typeof args.query === 'string') {
+      return event.keywords.includes(args.query);
     }
   });
 }
 
-function manageSchedule(args: ManageScheduleArgs) {
-  const { action, event } = args;
-
-  if (action === 'enroll') {
-    events = [...events, event];
-  }
-
-  if (action === 'drop') {
-    events = events.filter((_event) => _event.id !== event.id);
-  }
+function enroll(event: Course | StudyGroup) {
+  enrolledEvents = [...enrolledEvents, event];
 }
 
-function viewSchedule() {
-  events.forEach((event) => {
-    console.log(
-      `${event.type === 'course' ? 'Course' : 'Group'}: ${event.title}`
-    );
-  });
-}
+const searchResults = searchEvents({ query: 'art', type: 'courses' });
 
-const coursesSearchResults = searchEvents({ query: 'art', type: 'courses' });
+enroll(searchResults[0]);
 
-coursesSearchResults.forEach((courseSearchResult: Course) => {
-  manageSchedule({ action: 'enroll', event: courseSearchResult });
-
-  const studyGroup = studyGroups.find(
-    (studyGroup) => studyGroup.id === courseSearchResult.studyGroupId
-  );
-  manageSchedule({ action: 'enroll', event: studyGroup });
-});
-
-manageSchedule({ action: 'drop', event: events[1] });
-
-viewSchedule();
+console.log(enrolledEvents);
